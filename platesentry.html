@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PlateSentry</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <nav>
+            <h1>PlateSentry</h1>
+        </nav>
+        <div class="container">
+            <div class="column">
+                <h2>Upload Image</h2>
+                <input type="file" id="image-input" onchange="loadImage(event)">
+                <img id="uploaded-image">
+            </div>
+            <div class="column">
+                <h2>Output</h2>
+                <img id="output-image">
+            </div>
+            <div class="column">
+                <h2>Data</h2>
+                <div id="data-output"></div>
+            </div>
+        </div>
+        <div class="container">
+            <button class="button-3" role="button">Proceed</button>
+        </div>
+        <div class="container">
+            <button class="button-3" role="button" onclick="window.location.href='index.html'">Back</button>
+        </div>
+        <script>
+            function loadImage(event) {
+                var reader = new FileReader();
+                reader.onload = function(){
+                    var uploadedImage = document.getElementById('uploaded-image');
+                    uploadedImage.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+    </body>
+</html>
