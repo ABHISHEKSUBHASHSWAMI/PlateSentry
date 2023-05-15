@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>PlateSentry</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar close">
+    <div class="logo-details">
+        <i class='bx bxs-car' onclick="window.location = '/';" ></i> 
+      <span class="logo_name">PlateSentry</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-brain' ></i>
+            <span class="link_name">Model</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Model</a></li>
+          <i class='bx bx-image' ></i>
+          <li><a href="/image">Image Feed</a></li>
+          <i class='bx bx-video' ></i>
+          <li><a href="/video">Video Feed</a></li>
+          <i class='bx bx-video-recording' ></i>
+          <li><a href="/live">Live Feed</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-content' ></i>
+            <span class="link_name xr ">Docs</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Docs</a></li>
+          <i class=' bx bx-file' ></i>
+          <li><a href="/yolo">Paper</a></li>
+          <i class=' bx bx-folder-open' ></i>
+          <li><a href="#">Report</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class=' bx bx-link' ></i>
+            <span class="link_name">Links</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Links</a></li>
+          <i class='bx bxl-github' ></i>
+          <li><a href="https://github.com/ABHISHEKSUBHASHSWAMI/PlateSentry/blob/main/image.ipynb">GitHub</a></li>
+          <i class='bx bx-mail-send' ></i>
+          <li><a href="mailto:ab5748251@gmail.com">Email</a></li>
+          <i class='bx bxl-kickstarter' ></i>
+          <li><a href="https://www.kaggle.com/code/abhisheksubhashswami/licence-plate-recognition?scriptVersionId=129696333">Kaggle</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class=' bx bx-ghost' ></i>
+            <span class="link_name">Team</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Team</a></li>
+          <li><a href="#">MR.ABHISHEK SWAMI</a></li>
+          <li><a href="#">MR.ATHARV PATIL</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="/">
+            <i class=' bx bx-undo' ></i>
+            <span class="link_name">Back</span>
+          </a>
+        </div>
+      </li>
+</ul>
+  </div>
+  <section class="home-section">
+    <div class="home-content">
+      <i class='bx bx-vector' ></i>
+      <span class="text">LICENCE PLATE RECOGNITION</span>
+    </div>
+    <div class="container1">
+        <div class="column">
+            <h2>Upload Video</h2>
+            <input type="file" id="video-input" onchange="loadVideo(event)">
+            <video id="uploaded-video" controls style="display: none;"></video>
+        </div>
+        <div class="column">
+            <h2>Output</h2>
+            <video id="output-video">
+        </div>
+    </div>
+    <div class="container1">
+        <button class="button-3" role="button">Proceed</button>
+    </div>
+  </section>
+  
+  <script src="static/js/script.js"></script>
+
+</body>
+</html>
