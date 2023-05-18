@@ -26,7 +26,7 @@ def ocr(img):
     for i in  range(len(result)):
         accuracy.append(result[i][-1])
     accuracy=round(np.mean(accuracy)*100,4)
-    data="Text : "+text +"Accuracy : " + str(accuracy)
+    data="Text : "+text +"    Accuracy : " + str(accuracy)
     return data
     
 
@@ -76,7 +76,11 @@ def image_detection(img):
 
 ###############VIDEO#####################
 def video_detection(video):
-    cap = cv2.VideoCapture(video)
+    #if video is path to video
+    if isinstance(video, str):
+        cap= cv2.VideoCapture(video)
+    else:
+        cap = video
     # Check if the video opened successfully
     if not cap.isOpened():
         print("Error opening video stream or file")
@@ -202,7 +206,8 @@ def process_image(path):
         text=text.upper().replace('IND','')
         print(f"\nNumberplate - {re.sub(r'[^a-zA-Z0-9]', '', text)}")
         print(f"Accuracy - {np.mean(accuracy)*100}%")
-        return text,accuracy
+        data="Text : "+text +"    Accuracy : " + str(accuracy)
+        return data
     except Exception as e:
         print(f"Error processing image !")
         sys.exit()
