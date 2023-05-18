@@ -12,7 +12,8 @@ console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", ()=>{
   sidebar.classList.toggle("close");
 });
-function loadImage(event) {
+
+/*function loadImage(event) {
   var reader = new FileReader();
   var file = event.target.files[0];
   var ext = file.name.substring(file.name.lastIndexOf('.') + 1).toLowerCase();
@@ -26,6 +27,7 @@ function loadImage(event) {
     alert("Only JPG, JPEG, PNG, and GIF files are allowed!");
   }
 }
+
 
 function loadVideo(event) {
   var reader = new FileReader();
@@ -42,6 +44,10 @@ function loadVideo(event) {
     alert("Only MP4, MKV, AVI, and 3GP files are allowed!");
   }
 }
+
+*/
+
+
 var liveVideo = document.getElementById('live-video');
 
 if (liveVideo) {
@@ -53,4 +59,3 @@ if (liveVideo) {
       console.error('Error accessing the camera: ', error);
     });
 }
-

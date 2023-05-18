@@ -98,18 +98,35 @@
       <i class='bx bx-vector' ></i>
       <span class="text">LICENCE PLATE RECOGNITION</span>
     </div>
-    <div class="container1">
-        <div class="column">
-            <h2>Upload Video</h2>
-            <input type="file" id="video-input" onchange="loadVideo(event)">
-            <video id="uploaded-video" controls style="display: none;"></video>
-        </div>
-    </div>
-    <div class="container1">
-        <button class="button-3" role="button">Proceed</button>
-    </div>
-  </section>
+    <div class="form">
+      <div>
+          <h1>Upload an Image</h1>
+      </div>
+      <form action="/imupload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image"><br><br>
+      <div class="button-3s">
+          <button class="button-3" role="button" type="submit">Proceed</button>
+      </div>
+  </form>
   
+  </div>
+{%if upload%}
+      <div class="container1">
+          <div class="column">
+              <h2>Uploaded Image</h2>
+              <img src="data:image/png;base64,{{ upload }}" width=400px >
+          </div>
+          <div class="column">
+            <h2>Output Image</h2>
+            <img src="data:image/png;base64,{{ result }}" width=400px >
+        </div>
+          <div class="column">
+              <h2>Data</h2>
+              <p>"{{data}}"</p>
+          </div>
+      </div>
+ {%endif%}
+  </section>
   <script src="static/js/script.js"></script>
 
 </body>

@@ -280,13 +280,6 @@ body{
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
 }
-#image-input {
-  margin-bottom: 10px;
-}
-#uploaded-image, #uploaded-video {
-  max-width: 100%;
-  margin-bottom: 10px;
-}
 
 .column {
   display: flex;
@@ -345,4 +338,23 @@ body{
 }
 .button-3:hover {
   background-color: rgb(29, 27,47);
+}
+
+.form{
+  margin-top: 7%;
+  margin-bottom: 5%;
+  justify-content: center;
+  display: grid;
+  grid-gap: 20px;
+}
+.form h1{
+  font-size: 30px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.button-3s{
+  margin-left: 25%;
+  margin-top: 5%;
+
 }
