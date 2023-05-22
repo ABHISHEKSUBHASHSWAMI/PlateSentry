@@ -1,8 +1,9 @@
-from flask import Flask, render_template, send_file,request
+from flask import Flask, render_template, send_file,request, Response
 import os
 import base64
 from ultralytics import YOLO
 import cv2
+from IPython.display import HTML
 
 #model
 model = YOLO('Model/plateSentry.pt')
@@ -64,6 +65,41 @@ def video_detection(video):
     # Close all the frames
     cv2.destroyAllWindows()
     return output_path
+
+
+#live feed
+def generate_frames():
+    # Create a VideoCapture object and set the camera source
+    cap = cv2.VideoCapture(0)
+
+    # Loop through the frames
+    while cap.isOpened():
+        # Read a frame from the video
+        success, frame = cap.read()
+
+        if success:
+            # Run your model inference on the frame
+            # Modify this part with your own model code
+            #frame = cv2.flip(frame, 1)
+            # Annotate the frame with your model's results
+            annotated_frame = model(frame,conf=0.4)[0].plot()  # Replace with your own annotation code
+
+            # Encode the annotated frame as JPEG
+            ret, buffer = cv2.imencode('.jpg', annotated_frame)
+            frame_bytes = buffer.tobytes()
+
+            # Yield the frame as multipart response
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+        else:
+            break
+
+    # Release the VideoCapture and close windows if any
+    cap.release()
+    cv2.destroyAllWindows()
+
+
 
 #encode function
 def encode_image(image_path):
@@ -157,8 +193,11 @@ def video_page():
     return render_template('video.html')
 
 
-@app.route('/live')
-def live_page():
+@app.route('/live', methods=['GET','POST'])
+def live():
+    if request.method == 'POST':
+        return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
+
     return render_template('live.html')
 
 @app.route('/yolo')
@@ -167,7 +206,7 @@ def paper():
 
 @app.route('/report')
 def report():
-    pass
+    return send_file('docs/Report.pdf',mimetype='application/pdf')
 
 
 if __name__ == '__main__':

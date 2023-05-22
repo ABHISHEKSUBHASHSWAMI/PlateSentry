@@ -48,7 +48,7 @@
           <i class=' bx bx-file' ></i>
           <li><a href="/yolo">Paper</a></li>
           <i class=' bx bx-folder-open' ></i>
-          <li><a href="#">Report</a></li>
+          <li><a href="/report">Report</a></li>
         </ul>
       </li>
       <li>
@@ -98,12 +98,16 @@
       <i class='bx bx-vector' ></i>
       <span class="text">LICENCE PLATE RECOGNITION</span>
     </div>
-    <div class="container1">
-        <div class="column">
-            <h2>Live Feed</h2>
-            <video src="{{live}}"></video>
+    <div class="live">
+      <form action="/live" method="POST" enctype="multipart/form-data">
+        <div class="button-3s">
+            <button class="button-3" role="button" type="submit">Start Live </button>
         </div>
+      </form>
     </div>
+    {%if submit%}
+    <img src="{{ url_for('live') }}">
+    {%endif%}
   </section>
   
   <script src="static/js/script.js"></script>

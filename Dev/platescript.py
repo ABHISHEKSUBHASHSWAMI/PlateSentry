@@ -50,18 +50,14 @@ def livefeed():
             annotated_frame = results[0].plot()
 
             # Display the annotated frame
-            cv2.imshow("YOLOv8 Inference", annotated_frame)
+            success, buffer = cv2.imencode('.jpg', annotated_frame)
+            annotated_frame = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + annotated_frame + b'\r\n')
 
             # Break the loop if 'q' is pressed
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
-        else:
-            # Break the loop if the end of the video is reached
-            break
-
-    # Release the video capture object and close the display window
-    cap.release()
-    cv2.destroyAllWindows()
 
 ################IMAGE####################
 
